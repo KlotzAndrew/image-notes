@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   thumbnail: {
-        width: 53,
-            height: 81,
-              },
+    width: 53,
+    height: 81,
+  },
 });
 
 var MOCKED_MOVIES_DATA = [

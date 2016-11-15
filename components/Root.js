@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageList from './ImageList'
 import ListItem from './ListItem'
+import CameraScreen from './CameraScreen'
 import {
   StyleSheet,
   StatusBar,
@@ -20,6 +21,8 @@ export default class Root extends Component {
         <Text>{route.filepath}</Text>
       </View>
       )
+    } else if (route.id == 'TAKE_PHOTO') {
+     return (<CameraScreen />)
     }
   }
 
@@ -33,7 +36,7 @@ export default class Root extends Component {
        routeMapper={{
          LeftButton: (route, navigator, index, navState) =>
           {
-            if (route.id == 'IMAGE_ITEM') {
+            if (route.id != 'IMAGE_LIST') {
               return (
               <TouchableHighlight onPress={() => navigator.pop()}>
                 <Text>Back</Text>
@@ -42,7 +45,12 @@ export default class Root extends Component {
             }
           },
          RightButton: (route, navigator, index, navState) =>
-           { return (<Text>Done</Text>); },
+           { return (
+              <TouchableHighlight onPress={() => navigator.push(photoScene)}>
+                <Text>+Photo</Text>
+              </TouchableHighlight>
+              ); 
+           },
          Title: (route, navigator, index, navState) =>
            { return (<Text>{route.title}</Text>); },
        }}
@@ -54,6 +62,7 @@ export default class Root extends Component {
   }
 }
 
+const photoScene = { title: 'taking a photo!', id: 'TAKE_PHOTO' }
 const styles = StyleSheet.create({
   container: {
     flex: 1,

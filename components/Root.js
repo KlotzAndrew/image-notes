@@ -8,7 +8,9 @@ import {
   View,
   Navigator,
   Text,
+  Image,
   TouchableHighlight,
+  Dimensions,
 } from 'react-native';
 
 export default class Root extends Component {
@@ -16,9 +18,16 @@ export default class Root extends Component {
     if (route.id === 'IMAGE_LIST') {
       return <ImageList navigator={ navigator } />
     } else if (route.id == 'IMAGE_ITEM') {
+      var {height, width} = Dimensions.get('window');
       return (
       <View style={styles.container}>
-        <Text>{route.filepath}</Text>
+        <Image 
+          style={{height: height, width: width}}
+          source={{
+              isStatic: true,
+              uri: 'data:image/jpeg;base64,'+ route.imageData,
+          }}
+        />
       </View>
       )
     } else if (route.id == 'TAKE_PHOTO') {
@@ -69,6 +78,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  image: {
+    flex: 1,
+    backgroundColor: '#eee',
   },
 });
 

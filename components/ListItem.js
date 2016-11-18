@@ -10,7 +10,7 @@ import {
 
 export default class ListItem extends Component {
   render() {
-    const sceneA = { title: 'my new scene!', id: 'IMAGE_ITEM', imageData: this.props.name }
+    const sceneA = { title: 'my new scene!', id: 'IMAGE_ITEM', todo: this.props.todo }
 
     return (
       <TouchableOpacity onPress={() => { this.props.navigator.push(sceneA) }}>
@@ -18,7 +18,7 @@ export default class ListItem extends Component {
           style={styles.image}
           source={{
               isStatic: true,
-              uri: 'data:image/jpeg;base64,'+ this.props.name,
+              uri: 'data:image/jpeg;base64,'+ this.props.todo.imageString,
           }}
         />
       </TouchableOpacity>

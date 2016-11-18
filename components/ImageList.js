@@ -12,22 +12,22 @@ import Realm from 'realm';
 export default class Root extends Component {
   render() {
     let realm = new Realm({
-      schema: [{name: 'Dog', properties: {name: 'string'}}]
+      schema: [{name: 'Todo', properties: {imageString: 'string'}}]
     });
 
     return (
       <View style={styles.container}>
-        <Text>count todos: {realm.objects('Dog').length}</Text>
-        {this._showImages(realm)}
+        <Text>count todos: {realm.objects('Todo').length}</Text>
+        {this._listTodos(realm)}
       </View>
     );
   }
 
-  _showImages(realm) {
-    return realm.objects('Dog').map((dog, i) =>
+  _listTodos(realm) {
+    return realm.objects('Todo').map((todo, i) =>
       <ListItem
         key={i}
-        name={dog.name}
+        todo={todo}
         navigator={ this.props.navigator }
       />
     )

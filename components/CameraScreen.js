@@ -27,33 +27,19 @@ export default class CameraScreen extends Component {
   }
 
   takePicture() {
-let realm = new Realm({
-     schema: [{name: 'Dog', properties: {name: 'string'}}]
-   });
+    let realm = new Realm({
+      schema: [{name: 'Todo', properties: {imageString: 'string'}}]
+    });
 
     this.camera.capture()
       .then((data) => {
         realm.write(() => {
-          realm.create('Dog', {name: data.data});
+          realm.create('Todo', {imageString: data.data});
         });
 
-       console.log(data)
+      this.props.navigator.pop()
       })
       .catch(err => console.error(err));
-  }
-
-  _getBase64(url) {
-    var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function() {
-        var reader = new FileReader();
-        reader.onloadend = function() {
-          callback(reader.result);
-        }
-        reader.readAsDataURL(xhr.response);
-      };
-      xhr.open('GET', url);
-      xhr.send();
   }
 }
 

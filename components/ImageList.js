@@ -8,16 +8,16 @@ import {
 } from 'react-native';
 import ListItem from './ListItem'
 import Realm from 'realm';
+import schema from '../db/schema'
 
 export default class Root extends Component {
   render() {
     let realm = new Realm({
-      schema: [{name: 'Todo', properties: {imageString: 'string'}}]
+      schema: [schema.todo]
     });
 
     return (
       <View style={styles.container}>
-        <Text>count todos: {realm.objects('Todo').length}</Text>
         {this._listTodos(realm)}
       </View>
     );

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import Realm from 'realm';
+import schema from '../db/schema'
 
 export default class CameraScreen extends Component {
   render() {
@@ -28,7 +29,7 @@ export default class CameraScreen extends Component {
 
   takePicture() {
     let realm = new Realm({
-      schema: [{name: 'Todo', properties: {imageString: 'string'}}]
+      schema: [schema.todo]
     });
 
     this.camera.capture()

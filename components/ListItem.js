@@ -29,8 +29,9 @@ export default class ListItem extends Component {
 
 const styles = StyleSheet.create({
   image: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
+    margin: 10,
     backgroundColor: '#eee',
   },
 });

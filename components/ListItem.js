@@ -18,7 +18,7 @@ export default class ListItem extends Component {
           style={styles.image}
           source={{
               isStatic: true,
-              uri: 'data:image/jpeg;base64,'+ this.props.todo.imageString,
+              uri: this.props.todo.imageString,
           }}
         />
       </TouchableOpacity>

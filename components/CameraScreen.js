@@ -19,7 +19,7 @@ export default class CameraScreen extends Component {
             this.camera = cam;
           }}
           style={styles.preview}
-          captureTarget={Camera.constants.CaptureTarget.memory}
+          captureTarget={Camera.constants.CaptureTarget.cameraRoll}
           aspect={Camera.constants.Aspect.fill}>
           <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
         </Camera>
@@ -35,9 +35,9 @@ export default class CameraScreen extends Component {
     this.camera.capture()
       .then((data) => {
         realm.write(() => {
-          realm.create('Todo', {imageString: data.data});
+          realm.create('Todo', {imageString: data.path});
         });
-
+      console.log(data)
       this.props.navigator.pop()
       })
       .catch(err => console.error(err));

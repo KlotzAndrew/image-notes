@@ -7,8 +7,6 @@ import {
   View
 } from 'react-native';
 import Camera from 'react-native-camera';
-import Realm from 'realm';
-import schema from '../db/schema'
 
 export default class CameraScreen extends Component {
   render() {
@@ -28,23 +26,16 @@ export default class CameraScreen extends Component {
   }
 
   takePicture() {
-    let realm = new Realm({
-      schema: [schema.todo]
-    });
 
     this.camera.capture()
       .then((data) => {
-        realm.write(() => {
-          realm.create('Todo', {
-            path: data.path,
-            title: 'should do this soon!',
-          });
-        });
-      this.props.navigator.pop()
+        this.props.navigator.push({title: 'add a note!', id: 'ADD_NOTE', path: data.path })
       })
       .catch(err => console.error(err));
   }
 }
+
+const addNoteScene = {}
 
 const styles = StyleSheet.create({
   container: {

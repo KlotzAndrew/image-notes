@@ -3,6 +3,7 @@ import ImageList from './ImageList'
 import ListItem from './ListItem'
 import CameraScreen from './CameraScreen'
 import NavigationBar from './NavigationBar'
+import AddNote from './AddNote'
 import {
   StyleSheet,
   StatusBar,
@@ -21,31 +22,42 @@ export default class Root extends Component {
     } else if (route.id == 'IMAGE_ITEM') {
       var {height, width} = Dimensions.get('window');
       return (
-      <View style={styles.container}>
-        <Image
-          style={{height: height, width: width}}
-          source={{
-            isStatic: true,
-            uri: route.todo.path,
-          }}
-        />
-      </View>
+        <View style={styles.container}>
+          <Image
+            style={{height: height, width: width}}
+            source={{
+              isStatic: true,
+              uri: route.todo.path,
+            }}
+          />
+        </View>
       )
     } else if (route.id == 'TAKE_PHOTO') {
      return (<CameraScreen navigator={ navigator }/>)
+    } else if (route.id == 'ADD_NOTE') {
+      console.log('route id', route.id)
+      console.log('route path', route.path)
+      return (
+        <AddNote
+          navigator={ navigator }
+          path={ route.path }
+        />
+      )
     }
   }
 
   render() {
     return (
       <Navigator style={{ flex: 1 }}
-        initialRoute={{ id: 'IMAGE_LIST', title: 'TODO List' }}
+        initialRoute={ initialRoute }
         renderScene={ this.renderScene }
         navigationBar={ NavigationBar }
       />
     );
   }
 }
+
+const initialRoute = { id: 'IMAGE_LIST', title: 'TODO List' }
 
 const styles = StyleSheet.create({
   container: {

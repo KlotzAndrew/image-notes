@@ -14,13 +14,16 @@ export default class ListItem extends Component {
 
     return (
       <TouchableOpacity onPress={() => { this.props.navigator.push(sceneA) }}>
-        <Image
-          style={styles.image}
-          source={{
-              isStatic: true,
-              uri: this.props.todo.imageString,
-          }}
-        />
+        <View style={styles.todoRow}>
+          <Image
+            style={styles.image}
+            source={{
+                isStatic: true,
+                uri: this.props.todo.path,
+            }}
+          />
+          <Text>{this.props.todo.title}</Text>
+        </View>
       </TouchableOpacity>
     )
   }
@@ -33,6 +36,9 @@ const styles = StyleSheet.create({
     height: 75,
     margin: 10,
     backgroundColor: '#eee',
+  },
+  todoRow: {
+    flexDirection: 'row',
   },
 });
 

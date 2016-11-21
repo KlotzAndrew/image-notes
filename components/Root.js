@@ -26,7 +26,7 @@ export default class Root extends Component {
           style={{height: height, width: width}}
           source={{
             isStatic: true,
-            uri: route.todo.imageString,
+            uri: route.todo.path,
           }}
         />
       </View>

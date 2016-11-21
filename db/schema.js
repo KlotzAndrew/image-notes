@@ -2,7 +2,8 @@ export default {
   todo: {
     name: 'Todo',
     properties: {
-      imageString: 'string'
+      path: 'string',
+      title: 'string',
     }
   }
 }

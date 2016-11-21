@@ -35,9 +35,11 @@ export default class CameraScreen extends Component {
     this.camera.capture()
       .then((data) => {
         realm.write(() => {
-          realm.create('Todo', {imageString: data.path});
+          realm.create('Todo', {
+            path: data.path,
+            title: 'should do this soon!',
+          });
         });
-      console.log(data)
       this.props.navigator.pop()
       })
       .catch(err => console.error(err));

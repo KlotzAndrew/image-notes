@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   View,
+  ScrollView,
 } from 'react-native';
 import ListItem from './ListItem'
 import Realm from 'realm';
@@ -18,7 +19,9 @@ export default class Root extends Component {
 
     return (
       <View style={styles.container}>
-        {this._listTodos(realm)}
+        <ScrollView style={ styles.scrollView }>
+          {this._listTodos(realm)}
+        </ScrollView>
       </View>
     );
   }
@@ -40,6 +43,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    paddingTop: 64,
+  },
+  ScrollView: {
+    flex: 1,
   },
 });
 

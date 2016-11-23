@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  Dimensions,
   StatusBar,
   Text,
   View,
@@ -29,7 +30,6 @@ export default class ListItem extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   image: {
     width: 75,
@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
   },
   todoRow: {
     flexDirection: 'row',
+    flex: 1,
+    width: Dimensions.get('window').width
   },
 });
 

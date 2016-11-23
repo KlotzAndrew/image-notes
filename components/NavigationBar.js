@@ -14,7 +14,7 @@ const NavigationBarRouteMapper = {
    {
      if (route.id != 'IMAGE_LIST') {
        return (
-       <TouchableHighlight 
+       <TouchableHighlight
          style={styles.navBarLeftButton}
          onPress={() => navigator.pop()}>
          <Text style={styles.navBarText}>

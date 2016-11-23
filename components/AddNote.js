@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   Image,
   View,
+  TextInput,
 } from 'react-native';
 import Realm from 'realm';
 import schema from '../db/schema'
@@ -16,11 +17,11 @@ export default class AddNote extends Component {
     this.state = {
       todo: {
         path: props.path,
-        title: 'should do this soon!',
+        title: '',
       }
     }
   }
-  
+
   render() {
     var {height, width} = Dimensions.get('window');
     console.log('render this.state', this.state)
@@ -32,7 +33,15 @@ export default class AddNote extends Component {
             isStatic: true,
             uri: this.state.todo.path,
           }}>
-          <Text style={styles.capture} onPress={() => this._saveTodo(this.state.todo)}>[ADD NOTE]</Text>
+          <View style={ styles.noteBox }>
+            <Text style={ styles.textButton } onPress={() => this._saveTodo(this.state.todo)}>Save Note</Text>
+            <TextInput
+              style={ styles.textInput }
+              value={this.state.todo.title}
+              maxLength={ 140 }
+              placeholder={ 'Add a note...' }
+              onChangeText={(text) => this.setState({todo: Object.assign({}, this.state.todo, {title: text})})}/>
+          </View>
         </Image>
       </View>
     )
@@ -47,7 +56,7 @@ export default class AddNote extends Component {
     realm.write(() => {
       realm.create('Todo', {
         path: todo.path,
-        title: 'should do this soon!',
+        title: todo.title,
       });
     });
     this.props.navigator.popToTop(0)
@@ -67,12 +76,27 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width
   },
-  capture: {
+  textButton: {
     flex: 0,
     backgroundColor: 'green',
+    color: '#fff',
+    margin: 5,
     borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
+    padding: 5,
+    textAlign: 'center',
+  },
+  textInput: {
+    flex: 0,
+    backgroundColor: 'grey',
+    color: '#fff',
+    margin: 5,
+    borderRadius: 5,
+  },
+  noteBox: {
+    flex: 0,
+    width: Dimensions.get('window').width*0.8,
+    backgroundColor: '#fff',
+    marginBottom: 50,
+    borderRadius: 5,
   }
 });

@@ -11,7 +11,7 @@ import {
 
 export default class ListItem extends Component {
   render() {
-    const sceneA = { title: 'my new scene!', id: 'IMAGE_ITEM', todo: this.props.todo }
+    const sceneA = { title: this.props.todo.title, id: 'IMAGE_ITEM', todo: this.props.todo }
 
     return (
       <TouchableOpacity onPress={() => { this.props.navigator.push(sceneA) }}>
@@ -39,8 +39,10 @@ const styles = StyleSheet.create({
   },
   todoRow: {
     flexDirection: 'row',
-    flex: 1,
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width*0.95,
+    backgroundColor: '#eee',
+    margin: 5,
+    borderRadius: 5,
   },
 });
 

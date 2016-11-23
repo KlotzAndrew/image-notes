@@ -46,7 +46,7 @@ const NavigationBarRouteMapper = {
 
             navigator.pop()}
           }>
-            <Text style={styles.navBarText}>
+            <Text style={[styles.navBarText, styles.navBarRightButton]}>
               Delete
             </Text>
           </TouchableHighlight>
@@ -70,15 +70,17 @@ const styles = StyleSheet.create({
   },
   navBarText: {
     fontSize: 16,
-    marginVertical: 10,
     color: colors.white,
+    marginVertical: 15,
   },
   navBarTitleText: {
     fontWeight: '500',
-    marginVertical: 9,
   },
   navBarLeftButton: {
     paddingLeft: 10,
+  },
+  navBarRightButton: {
+    paddingRight: 10,
   },
 });
 

@@ -48,7 +48,7 @@ export default class Root extends Component {
 
   render() {
     return (
-      <Navigator style={{ flex: 1 }}
+      <Navigator style={ styles.navBar }
         initialRoute={ initialRoute }
         renderScene={ this.renderScene }
         navigationBar={ NavigationBar }
@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     backgroundColor: '#eee',
+  },
+  navBar: {
+    flex: 1,
   },
 });
 

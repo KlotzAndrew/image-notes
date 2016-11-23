@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 import Realm from 'realm';
-import schema from '../db/schema'
+import schema from '../db/schema';
 
 export default class AddNote extends Component {
   constructor(props) {
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width,
   },
   textButton: {
     flex: 0,

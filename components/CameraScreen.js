@@ -26,7 +26,6 @@ export default class CameraScreen extends Component {
   }
 
   takePicture() {
-
     this.camera.capture()
       .then((data) => {
         this.props.navigator.push({title: 'add a note!', id: 'ADD_NOTE', path: data.path })
@@ -34,8 +33,6 @@ export default class CameraScreen extends Component {
       .catch(err => console.error(err));
   }
 }
-
-const addNoteScene = {}
 
 const styles = StyleSheet.create({
   container: {

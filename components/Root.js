@@ -35,8 +35,6 @@ export default class Root extends Component {
     } else if (route.id == 'TAKE_PHOTO') {
      return (<CameraScreen navigator={ navigator }/>)
     } else if (route.id == 'ADD_NOTE') {
-      console.log('route id', route.id)
-      console.log('route path', route.path)
       return (
         <AddNote
           navigator={ navigator }
